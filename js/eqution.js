@@ -7,18 +7,18 @@ document
     const hPart = parseFloat(
       document.getElementById("input-triangle-v2").value
     );
-    if ((bPart <= 0) || (hPart <= 0)|| (bPart == '') || (hPart == '')) {
+    if (bPart <= 0 || hPart <= 0 || bPart == "" || hPart == "") {
       return;
-    } else if ((isNaN(bPart)) || (isNaN(hPart))) {
-        return;
+    } else if (isNaN(bPart) || isNaN(hPart)) {
+      return;
     }
     const showValue = 0.5 * bPart * hPart;
-      //empty triangle inputed
+    //empty triangle inputed
     getempty("input-triangle-v1", "input-triangle-v2");
     // preview part
     const name = document.getElementById("triangle-name").innerText;
-      tablePart(name, showValue);
-      // color picker part
+    tablePart(name, showValue);
+    // color picker part
     document.getElementById("triangle-bg").style.backgroundColor =
       generateRandomColor();
   });
@@ -48,17 +48,16 @@ document
     const hPart = parseFloat(
       document.getElementById("input-rectangle-v2").value
     );
-    if ((bPart <= 0) || (hPart <= 0)|| (bPart == '') || (hPart == '')) {
+    if (bPart <= 0 || hPart <= 0 || bPart == "" || hPart == "") {
       return;
-    } else if ((isNaN(bPart)) || (isNaN(hPart))) {
-        return;
+    } else if (isNaN(bPart) || isNaN(hPart)) {
+      return;
     }
     //empty triangle inputed
-      getempty("input-rectangle-v1", "input-rectangle-v2");
-      
+    getempty("input-rectangle-v1", "input-rectangle-v2");
 
-      const showValue = bPart * hPart;
-      
+    const showValue = bPart * hPart;
+
     // document.getElementById("ans").innerText = showValue;
 
     //preview part
@@ -84,14 +83,14 @@ document
     const hPart = parseFloat(
       document.getElementById("input-parallelogram-v2").value
     );
-    if ((bPart <= 0) || (hPart <= 0)|| (bPart == '') || (hPart == '')) {
+    if (bPart <= 0 || hPart <= 0 || bPart == "" || hPart == "") {
       return;
-    } else if ((isNaN(bPart)) || (isNaN(hPart))) {
-        return;
+    } else if (isNaN(bPart) || isNaN(hPart)) {
+      return;
     }
     //empty triangle inputed
-      getempty("input-parallelogram-v1", "input-parallelogram-v2");
-      
+    getempty("input-parallelogram-v1", "input-parallelogram-v2");
+
     const showValue = bPart * hPart;
     // document.getElementById("ans").innerText = showValue;
 
@@ -173,14 +172,12 @@ document
   });
 
 document.getElementById("clear-btn").addEventListener("click", function () {
-  document.getElementById('cal-container').style.display = "none";
+  document.getElementById("content-container").classList.add("hidden");
 });
 
 document.getElementById("btn-blog").addEventListener("click", function () {
   location.href = "blog.html";
 });
-
-
 
 // colors picker
 // genNew.addEventListener("mouseenter", setBg);

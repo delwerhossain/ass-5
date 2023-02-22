@@ -1,5 +1,6 @@
 let count = 0;
 function tablePart(name, showValue) {
+  document.getElementById('content-container').classList.remove("hidden");
   count += 1;
   // console.log(myInputValue);
 
