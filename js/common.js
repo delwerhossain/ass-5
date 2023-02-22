@@ -74,21 +74,20 @@ function tablePart(name, showValue) {
 //                          getValue function 
 // -------------------------------------------------------------------------
 
-function getValue(value) {
-  let showValue = parseFloat(document.getElementById(value).value);
-  if (
-    showValue <= 0 &&
-    showValue == "" &&
-    showValue == undefined &&
-    showValue == 0 &&
-    isNaN(showValue)
-  ) {
-    document.getElementById(value).value = "";
-    alert("Please enter correct numerical");
-    return 0;
-  }
-  document.getElementById(value).value = "";
-  return showValue;
+function getempty(v1,v2) {
+  // if (
+  //   (showValue <= 0) &&
+  //   (showValue == "") &&
+  //   (showValue == undefined) &&
+  //   (showValue == 0) &&
+  //   isNaN(showValue)
+  // ) {
+  //   document.getElementById(value).value = "";
+  //   alert("Please enter correct numerical");
+  //   return 0;
+  // }
+  document.getElementById(v1).value = "";
+  document.getElementById(v2).value = "";
 }
 
 // 2 fixed values

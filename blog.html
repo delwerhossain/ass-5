@@ -1,100 +1,332 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     </script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: { "50": "#eef2ff", "100": "#e0e7ff", "200": "#c7d2fe", "300": "#a5b4fc", "400": "#818cf8", "500": "#6366f1", "600": "#4f46e5", "700": "#4338ca", "800": "#3730a3", "900": "#312e81" }
-                    }
-                },
-                fontFamily: {
-                    'body': [
-                        'Montserrat',
-                        'ui-sans-serif',
-                        'system-ui',
-                        '-apple-system',
-                        'system-ui',
-                        'Segoe UI',
-                        'Roboto',
-                        'Helvetica Neue',
-                        'Arial',
-                        'Noto Sans',
-                        'sans-serif',
-                        'Apple Color Emoji',
-                        'Segoe UI Emoji',
-                        'Segoe UI Symbol',
-                        'Noto Color Emoji'
-                    ],
-                    'sans': [
-                        'Montserrat',
-                        'ui-sans-serif',
-                        'system-ui',
-                        '-apple-system',
-                        'system-ui',
-                        'Segoe UI',
-                        'Roboto',
-                        'Helvetica Neue',
-                        'Arial',
-                        'Noto Sans',
-                        'sans-serif',
-                        'Apple Color Emoji',
-                        'Segoe UI Emoji',
-                        'Segoe UI Symbol',
-                        'Noto Color Emoji'
-                    ]
-                }
-            }
-        }
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#eef2ff",
+                100: "#e0e7ff",
+                200: "#c7d2fe",
+                300: "#a5b4fc",
+                400: "#818cf8",
+                500: "#6366f1",
+                600: "#4f46e5",
+                700: "#4338ca",
+                800: "#3730a3",
+                900: "#312e81",
+              },
+              headerC: {
+                50: "rgba(16, 144, 216, 0.1)",
+              },
+            },
+          },
+          fontFamily: {
+            body: [
+              "Montserrat",
+              "ui-sans-serif",
+              "system-ui",
+              "-apple-system",
+              "system-ui",
+              "Segoe UI",
+              "Roboto",
+              "Helvetica Neue",
+              "Arial",
+              "Noto Sans",
+              "sans-serif",
+              "Apple Color Emoji",
+              "Segoe UI Emoji",
+              "Segoe UI Symbol",
+              "Noto Color Emoji",
+            ],
+            sans: [
+              "Montserrat",
+              "ui-sans-serif",
+              "system-ui",
+              "-apple-system",
+              "system-ui",
+              "Segoe UI",
+              "Roboto",
+              "Helvetica Neue",
+              "Arial",
+              "Noto Sans",
+              "sans-serif",
+              "Apple Color Emoji",
+              "Segoe UI Emoji",
+              "Segoe UI Symbol",
+              "Noto Color Emoji",
+            ],
+          },
+        },
+      };
     </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
-</head>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<body class="bg-white dark:bg-gray-900 ">
+  <body class="bg-white dark:bg-gray-900 lg:mx-8 mx-4 lg:my-8 my-4">
+    <!---------------- header  part ------------------>
 
-   
+    <nav
+      class="bg-headerC-50 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-700 mb-8"
+    >
+      <div
+        class="container flex flex-wrap items-center justify-between mx-auto"
+      >
+        <div class="grid grid-rows-2">
+          <span class="self-center text-2xl font-semibold dark:text-white"
+            >Interactive
+          </span>
+          <span class="text-lg font-normal dark:text-white">
+            G e o m e t r y G e n i u s</span
+          >
+        </div>
+
+        <div class="flex md:order-2">
+          <button
+            id="theme-toggle"
+            type="button"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mx-4"
+          >
+            <svg
+              id="theme-toggle-dark-icon"
+              class="hidden w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              ></path>
+            </svg>
+            <svg
+              id="theme-toggle-light-icon"
+              class="hidden w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+          <button
+            id="btn-main"
+            type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Main page
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- -------------------------------------------------------------------------
+    -------------------------------------------------------------------------
+-------------------------------------------------------------------------
+-------------------------------------------------------------------------
+ -->
+    <section class="container">
+      <div
+        class="border rounded-lg border-2 p-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      >
+        <h2
+          class="text-4xl mb-8 font-bold text-gray-500 dark:text-gray-400 underline"
+        >
+          what is DOM and what is the perpose of DOM
+        </h2>
+        <p
+          class="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left"
+        >
+          DOM stands for Document Object Model. It is a programming interface
+          for web documents. The DOM represents the page so that programs can
+          change the document structure, style, and content. The DOM represents
+          the document as nodes and objects - that way, programming languages
+          can interact with the page.
+        </p>
+        <p class="font-light text-gray-500 dark:text-gray-400">
+          Using the DOM, developers can write JavaScript code to interact with
+          the elements and nodes of a web page. For example, they can use the
+          DOM to:
+        </p>
+
+        <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+          perpose of DOM:
+        </h2>
+        <ul
+          class="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400"
+        >
+          <li class="flex items-center">
+            <svg
+              class="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            Add or remove elements from the page
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            Change the styling or layout of elements on the page
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            Dynamically change the content of a web page based on user input
+          </li>
+          <li class="flex items-center">
+            <svg
+              class="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            Listen for user events such as clicks or keypresses and respond with
+            custom behavior
+          </li>
+        </ul>
+
+        <p class="font-light text-gray-500 dark:text-gray-400">
+          Listen for user events such as clicks or keypresses and respond with
+          custom behavior Overall, the DOM provides a powerful tool for creating
+          dynamic, interactive web applications that can respond to user input
+          and provide a rich user experience.
+        </p>
+      </div>
+
+      <div
+        class="mt-12 border rounded-lg border-2 p-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      >
+        <h2
+          class="text-4xl font-bold underline mb-8 text-gray-500 dark:text-gray-400"
+        >
+          How select element on DOM
+        </h2>
+        <p class="font-light text-gray-500 dark:text-gray-400">
+          It represents the page so that programs can change the document
+          structure, style, and content. To make changes to the DOM, we first
+          need to be able to select the elements we want to manipulate.
+          JavaScript provides several methods to select elements on the DOM.
+          <br />
+          <code class="text-2xl"> document.getElementById()</code>
+          <code class="text-2xl"> document.getElementsByName() </code>
+          <code class="text-2xl"> document.getElementsByTagName()</code>
+          <code class="text-2xl"> document.getElementsByTagNameNS()</code>
+          <code class="text-2xl"> document.querySelector()</code>
+          <code class="text-2xl"> document.querySelectorAll()</code>
+        </p>
+      </div>
+
+      <div
+        class="mt-12 border rounded-lg border-2 p-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      >
+        <h2
+          class="text-4xl font-bold underline mb-8 text-gray-500 dark:text-gray-400"
+        >
+          How select element on DOM
+        </h2>
+        <p class="font-light text-gray-500 dark:text-gray-400">
+          Event bubbling is a concept in web development that refers to the way
+          events propagate through the Document Object Model (DOM) in a web
+          page. When an event is triggered on a specific element in the DOM,
+          such as a button or a link, that event will propagate through the
+          hierarchy of parent elements that contain it, all the way up to the
+          root element of the page. This is called event bubbling because the
+          event "bubbles up" through the hierarchy of elements.
+        </p>
+      </div>
+
+
+      <div
+      class="mt-12 border rounded-lg border-2 p-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <h2
+        class="text-4xl font-bold underline mb-8 text-gray-500 dark:text-gray-400"
+      >
+      what is call back function ?
+
+      </h2>
+      <p class="font-light text-gray-500 dark:text-gray-400">
+        A callback function is a function that is passed as an argument to another function, and is called by that function when a certain event occurs or when a certain task is completed. In other words, the function that receives the callback function as an argument will "call back" or invoke the callback function at a later point in time, usually after it has completed some asynchronous operation.
+
+        For example, in JavaScript, a common use of a callback function is in the context of asynchronous operations, such as making an AJAX request or waiting for a user input. You can pass a callback function as an argument to the function that initiates the asynchronous operation, and the callback function will be called when the operation is complete or when the user provides input.
+    </div>
+    </section>
 
     <!-- Breadcrumb -->
 
-
     <!-- Breadcrumb -->
+
    
-
     <!--------------------------------------
-       customization part start here  
-    --------------------------------------->
-<!-- <section></section> -->
-
- 
-
-
-
-
-
-
-
-    <!--------------------------------------
-       customization part ends here  
+        -------------------------------
     --------------------------------------->
 
+    <!--------------------------------------
+        -------------------------------
+    --------------------------------------->
+
+    <!--------------------------------------
+       customization main part start  
+    --------------------------------------->
 
     <!-- footer  -->
-    
-
 
     <!--------------------- 
        flowframe  part 
@@ -104,6 +336,10 @@
     <!--------------------- 
       flowframe  part ends   
     ----------------------->
-</body>
 
+    <!-- project js files -->
+    <script src="./js/common.js"></script>
+    <script src="./js/blog.js"></script>
+    <!-- project js files -->
+  </body>
 </html>
