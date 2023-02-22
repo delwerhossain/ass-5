@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#eef2ff",
+                100: "#e0e7ff",
+                200: "#c7d2fe",
+                300: "#a5b4fc",
+                400: "#818cf8",
+                500: "#6366f1",
+                600: "#4f46e5",
+                700: "#4338ca",
+                800: "#3730a3",
+                900: "#312e81",
+              },
+              headerC: {
+                50: "rgba(16, 144, 216, 0.1)",
+              },
+            },
+          },
+          fontFamily: {
+            body: [
+              "Montserrat",
+              "ui-sans-serif",
+              "system-ui",
+              "-apple-system",
+              "system-ui",
+              "Segoe UI",
+              "Roboto",
+              "Helvetica Neue",
+              "Arial",
+              "Noto Sans",
+              "sans-serif",
+              "Apple Color Emoji",
+              "Segoe UI Emoji",
+              "Segoe UI Symbol",
+              "Noto Color Emoji",
+            ],
+            sans: [
+              "Montserrat",
+              "ui-sans-serif",
+              "system-ui",
+              "-apple-system",
+              "system-ui",
+              "Segoe UI",
+              "Roboto",
+              "Helvetica Neue",
+              "Arial",
+              "Noto Sans",
+              "sans-serif",
+              "Apple Color Emoji",
+              "Segoe UI Emoji",
+              "Segoe UI Symbol",
+              "Noto Color Emoji",
+            ],
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-white dark:bg-gray-900 lg:mx-8 mx-4 lg:my-8 my-4">
+    <!---------------- header  part ------------------>
+
+    <nav
+      class="bg-headerC-50 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-700 mb-8"
+    >
+      <div
+        class="container flex flex-wrap items-center justify-between mx-auto"
+      >
+        <div class="grid grid-rows-2">
+          <span class="self-center text-2xl font-semibold dark:text-white"
+            >Interactive
+          </span>
+          <span class="text-lg font-normal dark:text-white">
+            G e o m e t r y G e n i u s</span
+          >
+        </div>
+
+        <div class="flex md:order-2">
+          <button
+            id="theme-toggle"
+            type="button"
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mx-4"
+          >
+            <svg
+              id="theme-toggle-dark-icon"
+              class="hidden w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              ></path>
+            </svg>
+            <svg
+              id="theme-toggle-light-icon"
+              class="hidden w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+          <button id="btn-blog"
+            type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Blog
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--------------------------------------
+       customization main part start  
+    --------------------------------------->
+
+    <!--------------------------------------
+        -------------------------------
+    --------------------------------------->
+
+    <!--------------------------------------
+        -------------------------------
+    --------------------------------------->
+
+    <div
+      class="md:grid lg:grid-cols-6 md:grid-cols-3 grid-cols-1 flex flex-wrap-reverse gap-8 md:gap-2 justify-items-center justify-center"
+    >
+      <!---------------------- card section start ------------------------>
+      <div
+        class="lg:col-span-4 md:col-span-2 lg:gap-2 2xl:gap-4 md:gap-4 col-span-1 grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-y-4 justify-items-center"
+      >
+        <!-------- card -> 01  -------->
+        <div id="triangle-bg"
+          class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+        >
+          <div  class="flex justify-end px-4 pt-4">
+            <button
+              id="dropdownButton"
+              data-dropdown-toggle="dropdown"
+              class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+              type="button"
+            >
+              <span class="sr-only">Open dropdown</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+                ></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              id="dropdown"
+              class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+            >
+              <ul class="py-2" aria-labelledby="dropdownButton">
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Edit</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Export Data</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Delete</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div   class="flex flex-col items-center pb-10">
+            <img
+              class="w-24 h-24 mb-3"
+              src="./images/triangle.png"
+              alt="Bonnie image"
+            />
+            <h5 id="triangle-name" class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+              Triangle
+            </h5>
+            <span class="my-4 text-sm text-gray-700 dark:text-gray-400"
+              >Area (A) = 0.5 x b x h</span
+            >
+            <div
+              class="flex mt-2 space-x-3 md:mt-6 items-center contain-center px-8 py-4"
+            >
+              <input
+                type="number"
+                id="input-triangle-v1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="b"
+              /> 
+              <p class="text-gray-800 dark:text-white">cm</p>
+              <input
+                type="number"
+                id="input-triangle-v2"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="b"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+            </div>
+
+            <div class="flex mt-4 space-x-5 md:mt-6">
+              <button
+                id="btn-triangle-cal"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Calculate
+              </button>
+              <a
+                href="#"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+                >Edit</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-------- card -> 02  -------->
+        <div id="rectangle-bg"
+          class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+        >
+          <div class="flex justify-end px-4 pt-4">
+            <button
+              id="dropdownButton"
+              data-dropdown-toggle="dropdown"
+              class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+              type="button"
+            >
+              <span class="sr-only">Open dropdown</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+                ></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              id="dropdown"
+              class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+            >
+              <ul class="py-2" aria-labelledby="dropdownButton">
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Edit</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Export Data</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Delete</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div    class="flex flex-col items-center pb-10">
+            <img
+              class="w-24 h-24 mb-3"
+              src="./images/rectangle.png"
+              alt="Bonnie image"
+            />
+            <h5 id="rectangle-name" class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+              Rectangle
+            </h5>
+            <span class="my-4 text-sm text-gray-700 dark:text-gray-400"
+              >Area (A) = W x I</span
+            >
+            <div
+              class="flex mt-2 space-x-3 md:mt-6 items-center contain-center px-8 py-4"
+            >
+              <input
+                type="number"
+                id="input-rectangle-v1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="W"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+              <input
+                type="number"
+                id="input-rectangle-v2"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="I"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+            </div>
+
+            <div class="flex mt-4 space-x-5 md:mt-6">
+              <button
+                id="btn-rectangle-cal"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Calculate
+              </button>
+              <a
+                href="#"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+                >Edit</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-------- card -> 01  -------->
+        <div id="parallelogram-bg"
+          class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+        >
+          <div class="flex justify-end px-4 pt-4">
+            <button
+              id="dropdownButton"
+              data-dropdown-toggle="dropdown"
+              class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+              type="button"
+            >
+              <span class="sr-only">Open dropdown</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+                ></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              id="dropdown"
+              class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+            >
+              <ul class="py-2" aria-labelledby="dropdownButton">
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Edit</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Export Data</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Delete</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div  class=" flex flex-col items-center pb-10">
+            <img
+              class="w-24 h-24 mb-3"
+              src="./images/parallelogram.png"
+              alt="Bonnie image"
+            />
+            <h5 id="parallelogram-name" class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+              Parallelogram
+            </h5>
+            <span class="my-4 text-sm text-gray-700 dark:text-gray-400"
+              >Area (A) = b x h</span
+            >
+            <div
+              class="flex mt-2 space-x-3 md:mt-6 items-center contain-center px-8 py-4"
+            >
+              <input
+                type="number"
+                id="input-parallelogram-v1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="b"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+              <input
+                type="number"
+                id="input-parallelogram-v2"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="h"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+            </div>
+
+            <div class="flex mt-4 space-x-5 md:mt-6">
+              <button
+                id="btn-parallelogram-cal"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Calculate
+              </button>
+              <a
+                href="#"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+                >Edit</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-------- card -> 01  -------->
+        <div id="rhombus-bg"
+          class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+        >
+          <div class="flex justify-end px-4 pt-4">
+            <button
+              id="dropdownButton"
+              data-dropdown-toggle="dropdown"
+              class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+              type="button"
+            >
+              <span class="sr-only">Open dropdown</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+                ></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              id="dropdown"
+              class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+            >
+              <ul class="py-2" aria-labelledby="dropdownButton">
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Edit</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Export Data</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Delete</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div  class="flex flex-col items-center pb-10">
+            <img
+              class="w-24 h-24 mb-3"
+              src="./images/rhombus.png"
+              alt="Bonnie image"
+            />
+            <h5 id="rhombus-name" class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+              Rhombus
+            </h5>
+            <span class="my-4 text-sm text-gray-700 dark:text-gray-400"
+              >Area (A) = 0.5 x d<sub>1</sub> x d<sub>2</sub>
+            </span>
+            <div
+              class="flex mt-2 space-x-3 md:mt-6 items-center contain-center px-8 py-4"
+            >
+              <input
+                type="number"
+                id="input-rhombus-v1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="d1"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+              <input
+                type="number"
+                id="input-rhombus-v2"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="d2"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+            </div>
+
+            <div class="flex mt-4 space-x-5 md:mt-6">
+              <button
+                id="btn-rhombus-cal"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Calculate
+              </button>
+              <a
+                href="#"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+                >Edit</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-------- card -> 01  -------->
+        <div id="pentagon-bg"
+          class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+        >
+          <div class="flex justify-end px-4 pt-4">
+            <button
+              id="dropdownButton"
+              data-dropdown-toggle="dropdown"
+              class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+              type="button"
+            >
+              <span class="sr-only">Open dropdown</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+                ></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              id="dropdown"
+              class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+            >
+              <ul class="py-2" aria-labelledby="dropdownButton">
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Edit</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Export Data</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Delete</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div  class="flex flex-col items-center pb-10">
+            <img
+              class="w-24 h-24 mb-3"
+              src="./images/pentagon.png"
+              alt="Bonnie image"
+            />
+            <h5 id="pentagon-name" class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+              Pentagon
+            </h5>
+            <span class="my-4 text-sm text-gray-700 dark:text-gray-400"
+              >Area (A) = 0.5 x p x b</span
+            >
+            <div
+              class="flex mt-2 space-x-3 md:mt-6 items-center contain-center px-8 py-4"
+            >
+              <input
+                type="number"
+                id="input-pentagon-v1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="b"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+              <input
+                type="number"
+                id="input-pentagon-v2"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="b"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+            </div>
+
+            <div class="flex mt-4 space-x-5 md:mt-6">
+              <button
+                id="btn-pentagon-cal"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Calculate
+              </button>
+              <a
+                href="#"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+                >Edit</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-------- card -> 01  -------->
+        <div id="ellipse-bg"
+          class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+        >
+          <div class="flex justify-end px-4 pt-4">
+            <button
+              id="dropdownButton"
+              data-dropdown-toggle="dropdown"
+              class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+              type="button"
+            >
+              <span class="sr-only">Open dropdown</span>
+              <svg
+                class="w-6 h-6"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+                ></path>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div
+              id="dropdown"
+              class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+            >
+              <ul class="py-2" aria-labelledby="dropdownButton">
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Edit</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Export Data</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    >Delete</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="ellipse-bg" class="flex flex-col items-center pb-10">
+            <img
+              class="w-24 h-24 mb-3"
+              src="./images/ellipse.png"
+              alt="Bonnie image"
+            />
+            <h5 id="ellipse-name" class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+              Ellipse
+            </h5>
+            <span class="my-4 text-sm text-gray-700 dark:text-gray-400"
+              >Area (A) = &#960; ab</span
+            >
+            <div
+              class="flex mt-2 space-x-3 md:mt-6 items-center contain-center px-8 py-4"
+            >
+              <input
+                type="number"
+                id="input-ellipse-v1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="a"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+              <input
+                type="number"
+                id="input-ellipse-v2"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="b"
+              />
+              <p class="text-gray-800 dark:text-white">cm</p>
+            </div>
+
+            <div class="flex mt-4 space-x-5 md:mt-6">
+              <button
+                id="btn-ellipse-cal"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Calculate
+              </button>
+              <a
+                href="#"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+                >Edit</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!---------------------- card section start ------------------------>
+
+      <!-------- Area Calculation cpart  start -------->
+      <div
+        class="pb-12 col-span-2 w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      >        
+        <div 
+          class="text-2xl text-white border grid justify-items-stretch rounded-lg"        >
+          <div class="relative overflow-x-auto shadow-md rounded-lg">
+            <table
+              id="table"
+              class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+            >
+              <thead
+                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+              >
+                <tr>
+                  <!-- <th scope="col" class="px-6 py-3">
+                    <span class="sr-only">Image</span>
+                  </th> -->
+                  
+                  <th scope="col" class="pl-2   py-3">NO:</th>
+                  <th scope="col" class="pl-4 py-3">Name</th>
+                  <th scope="col" class="pl-8 py-3">Value</th>
+                  <th scope="col" class="pl-8 py-3 ">Action</th>
+                </tr>
+              </thead>
+              <tbody id="content-container">
+                <tr
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
+                <!-- --------------------------------------------------
+                            td part  fixed 
+                -------------------------------------------------- -->
+                  <!-- <td class="w-32 p-4">
+                    <img
+                      src="/docs/images/products/iphone-12.png"
+                      alt="Iphone 12"
+                    />
+                  </td> -->
+                  <!-- <td
+                    class="px-2 py-4 font-semibold text-gray-900 dark:text-white"
+                  >
+                    1.
+                  </td>
+                  <td
+                    class="pl-6 py-4 font-semibold text-gray-900 dark:text-white"
+                  >
+                  12
+                  </td>
+                  <td
+                    class="pl-6 py-4 font-semibold text-gray-900 dark:text-white"
+                  >
+                    999
+                  </td>
+                  <td class="pl-2 py-1">
+                    <button
+                      class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+                    >
+                      <span
+                        class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+                      >
+                        Covert to m <sup>2</sup>
+                      </span>
+                    </button>
+                  </td> -->
+
+
+                  
+                <!-- --------------------------------------------------
+                            td part  fixed 
+                -------------------------------------------------- -->
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="cal-container" class="justify-self-center">
+            <button
+              id="clear-btn"
+              class="mt-8 relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-700 to-red-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+            >
+              <span
+                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+              >
+                Clear All
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-------- Area Calculation part  end -------->
+    </div>
+
+    <!--------------------------------------
+        -------------------------------
+    --------------------------------------->
+
+    <!--------------------------------------
+        -------------------------------
+    --------------------------------------->
+
+    <!--------------------------------------
+       customization main part start  
+    --------------------------------------->
+
+    <!-- footer  -->
+
+    <!--------------------- 
+       flowframe  part 
+    ----------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <script src="./js/darkMode.js"></script>
+    <!--------------------- 
+      flowframe  part ends   
+    ----------------------->
+
+    <!-- project js files -->
+    <script src="./js/common.js"></script>
+    <script src="./js/eqution.js"></script>
+    <!-- project js files -->
+  </body>
+</html>
