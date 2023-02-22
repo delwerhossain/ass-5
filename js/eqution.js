@@ -172,9 +172,8 @@ document
       "" + generateRandomColor();
   });
 
-document.getElementById("clear-btn").addEventListener("click", function (e) {
-  console.log(e.target.parentNode);
-  e.target.parentNode.style.display = "none";
+document.getElementById("clear-btn").addEventListener("click", function () {
+  document.getElementById('cal-container').style.display = "none";
 });
 
 document.getElementById("btn-blog").addEventListener("click", function () {
